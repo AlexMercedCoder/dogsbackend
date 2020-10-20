@@ -22,5 +22,20 @@ router.delete("/:id", async (req, res) => {
   res.json(await Dog.findByIdAndRemove(req.params.id));
 });
 
+//seed route
+
+router.get("/seed", (req, res) => {
+  const Dogs = [
+    { name: "spot", age: 5 },
+    { name: "spot II", age: 5 },
+    { name: "spot III", age: 5 },
+    { name: "spot IV", age: 5 },
+  ];
+
+  Dog.create(Dogs, (err, data) => {
+    res.json(data);
+  });
+});
+
 // EXPORT ROUTER
 module.exports = router;
